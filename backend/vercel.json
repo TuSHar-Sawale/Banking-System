@@ -1,5 +1,3 @@
 {
-  "version": 2,
-  "buildCommand": "npm install",
-  "runtime": "nodejs18.x"
+  "version": 2
 }
