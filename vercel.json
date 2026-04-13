@@ -1,0 +1,41 @@
+{
+  "version": 2,
+  "buildCommand": "cd backend && npm install && cd ../frontend && npm install && npm run build",
+  "outputDirectory": "frontend/dist",
+  "installCommand": "npm install --legacy-peer-deps",
+  "env": {
+    "MONGO_URI": "@mongo_uri",
+    "NODE_ENV": "production",
+    "PORT": "5000",
+    "JWT_SECRET": "@jwt_secret",
+    "JWT_EXPIRY": "7d",
+    "REFRESH_TOKEN_SECRET": "@refresh_token_secret",
+    "EMAIL_SERVICE": "@email_service",
+    "EMAIL_USER": "@email_user",
+    "EMAIL_PASSWORD": "@email_password",
+    "EMAIL_FROM": "@email_from",
+    "OTP_EXPIRY": "10m",
+    "OTP_LENGTH": "6",
+    "BCRYPT_ROUNDS": "10",
+    "FRONTEND_URL": "@frontend_url",
+    "ENABLE_LOANS": "true",
+    "ENABLE_NOTIFICATIONS": "true",
+    "FRAUD_DETECTION_ENABLED": "true"
+  },
+  "functions": {
+    "backend/server.js": {
+      "memory": 1024,
+      "maxDuration": 60
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "backend/server.js"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}

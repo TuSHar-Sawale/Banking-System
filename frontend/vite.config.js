@@ -6,8 +6,20 @@ export default defineConfig({
   server: {
     port: 3000,
     host: 'localhost',
+    proxy: {
+      '/api': {
+        target: 'http://localhost:5000',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, '/api')
+      }
+    }
   },
   build: {
     outDir: 'dist',
+    sourcemap: false,
+    minify: 'terser',
+  },
+  define: {
+    'process.env.VITE_API_URL': JSON.stringify(process.env.VITE_API_URL || '/api')
   }
 })

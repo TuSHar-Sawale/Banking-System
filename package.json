@@ -1,0 +1,19 @@
+{
+  "name": "banking-system-fullstack",
+  "version": "1.0.0",
+  "description": "Full Stack Banking System - Frontend + Backend",
+  "private": true,
+  "scripts": {
+    "dev": "npm run dev --workspace=backend & npm run dev --workspace=frontend",
+    "build": "npm run build --workspace=backend && npm run build --workspace=frontend",
+    "start": "npm run start --workspace=backend",
+    "preview:frontend": "npm run preview --workspace=frontend"
+  },
+  "workspaces": [
+    "backend",
+    "frontend"
+  ],
+  "engines": {
+    "node": "18.x"
+  }
+}
